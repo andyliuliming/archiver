@@ -2,6 +2,7 @@ package extractor
 
 import (
 	"archive/tar"
+	"io"
 	"os"
 )
 
@@ -19,5 +20,10 @@ func (e *tarExtractor) Extract(src, dest string) error {
 	defer fd.Close()
 
 	tarReader := tar.NewReader(fd)
+	return extractTarArchive(tarReader, dest)
+}
+
+func (e *tarExtractor) ExtractStream(dest string, input io.Reader) error {
+	tarReader := tar.NewReader(input)
 	return extractTarArchive(tarReader, dest)
 }

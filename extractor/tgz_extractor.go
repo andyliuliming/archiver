@@ -35,6 +35,10 @@ func (e *tgzExtractor) Extract(src, dest string) error {
 	return nil
 }
 
+func (e *tgzExtractor) ExtractStream(dest string, input io.Reader) error {
+	return fmt.Errorf("not implemented.")
+}
+
 func extractTgz(src, dest string) error {
 	tarPath, err := exec.LookPath("tar")
 

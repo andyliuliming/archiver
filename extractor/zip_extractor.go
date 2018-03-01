@@ -35,6 +35,10 @@ func (e *zipExtractor) Extract(src, dest string) error {
 	return nil
 }
 
+func (e *zipExtractor) ExtractStream(dest string, input io.Reader) error {
+	return fmt.Errorf("not implemented.")
+}
+
 func extractZip(src, dest string) error {
 	path, err := exec.LookPath("unzip")
 
